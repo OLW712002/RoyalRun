@@ -9,22 +9,28 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float chunkLength = 10f;
     [SerializeField] float chunkMoveSpeed = 10f;
 
-    //GameObject[] chunks = new GameObject[12];
     List<GameObject> chunks = new List<GameObject>();
     
     void Start()
     {
         for (int i = 0; i < startingChunkAmount; i++)
         {
-            Vector3 chunkPos = transform.position + i * chunkLength * Vector3.forward;
-            GameObject chunk = Instantiate(chunkPrefab, chunkPos, Quaternion.identity, chunkParent);
-            chunks.Add(chunk);
+            GenerateNewChunk();
         }
     }
 
     void Update()
     {
         MoveChunks();
+    }
+
+    void GenerateNewChunk()
+    {
+        Vector3 newChunkPos;
+        if (chunks.Count == 0) newChunkPos = transform.position;
+        else newChunkPos = (chunks[chunks.Count - 1].transform.position.z + chunkLength) * Vector3.forward;
+        GameObject newChunk = Instantiate(chunkPrefab, newChunkPos, Quaternion.identity, chunkParent);
+        chunks.Add(newChunk);
     }
 
     void MoveChunks()
@@ -37,10 +43,10 @@ public class LevelGenerator : MonoBehaviour
             {
                 chunks.Remove(chunk);
                 Destroy(chunk);
-                Vector3 newChunkPos = transform.position + (startingChunkAmount * chunkLength + Camera.main.transform.position.z) * Vector3.forward;
-                GameObject newChunk = Instantiate(chunkPrefab, newChunkPos, Quaternion.identity, chunkParent);
-                chunks.Add(newChunk);
+                GenerateNewChunk();
             }
         }
     }
+
+
 }
