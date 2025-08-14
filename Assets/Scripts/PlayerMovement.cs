@@ -34,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 currentPos = rb.position;
         Vector3 moveDir = new Vector3(movement.x, 0f, movement.y);
-        Vector3 rawMovePosition = currentPos + moveDir * moveSpeed * Time.fixedDeltaTime;
-        float xClamp = Mathf.Clamp(rawMovePosition.x, -horizontalLimit, horizontalLimit);
-        float yClamp = Mathf.Clamp(rawMovePosition.z, backLimit, forwardLimit);
-        rb.MovePosition(new Vector3(xClamp, 0f, yClamp));
+        Vector3 newPosition = currentPos + moveDir * moveSpeed * Time.fixedDeltaTime;
+        newPosition.x = Mathf.Clamp(newPosition.x, -horizontalLimit, horizontalLimit);
+        newPosition.z = Mathf.Clamp(newPosition.z, backLimit, forwardLimit);
+        rb.MovePosition(newPosition);
     }
 }
