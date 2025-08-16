@@ -7,7 +7,6 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] Transform obstacleParent;
     [SerializeField] float timeBetweenSpawns = 2f;
 
-    int obstaclesSpawned = 0;
 
     void Start()
     {
@@ -16,11 +15,10 @@ public class ObstacleSpawner : MonoBehaviour
 
     IEnumerator GenerateObstacle()
     {
-        while (obstaclesSpawned < 5)
+        while (true)
         {
             yield return new WaitForSeconds(timeBetweenSpawns);
-            Instantiate(obstaclePrefab, transform.position, Quaternion.identity, obstacleParent);
-            obstaclesSpawned++;
+            Instantiate(obstaclePrefab, transform.position, Random.rotation, obstacleParent);
         }
     }
 
