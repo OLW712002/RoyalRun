@@ -784,9 +784,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba827dd08e806f64588489c28c5f7658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 4623120753064003157, guid: 954784eb6ffdcfc4592c3db4eff888a6, type: 3}
+  obstaclePrefabs:
+  - {fileID: 4623120753064003157, guid: 954784eb6ffdcfc4592c3db4eff888a6, type: 3}
+  - {fileID: 8291235354502173633, guid: d33bc9048ba461a44bd97c2241268d51, type: 3}
+  - {fileID: 3851690201396731577, guid: 324fdeed821a1274c9dbda7d05e66832, type: 3}
+  - {fileID: 4405331872571934992, guid: 299b2e226ca6471478eff9e78397e2a1, type: 3}
   obstacleParent: {fileID: 1171425861}
   timeBetweenSpawns: 1
+  spawnWidth: 2
 --- !u!4 &1928348686
 Transform:
   m_ObjectHideFlags: 0
