@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fencePrefab: {fileID: 2306074683821693722, guid: 995edd9db5ec169499f24f3e84a3ad7b, type: 3}
   fencePos:
-  - -2.5
-  - 0
-  - 2.5
+  - -2
+  - 1
+  - 4
 --- !u!1 &7569504730677912749
 GameObject:
   m_ObjectHideFlags: 0
