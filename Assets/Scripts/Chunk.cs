@@ -15,8 +15,8 @@ public class Chunk : MonoBehaviour
     void Start()
     {
         SpawnFences();
-        SpawnApple();
         SpawnCoins();
+        SpawnApple();
     }
 
     void SpawnFences()
