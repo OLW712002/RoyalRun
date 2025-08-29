@@ -33,7 +33,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 currentPos = rb.position;
         Vector3 moveDir = new Vector3(movement.x, 0f, movement.y);
-        Vector3 newPosition = currentPos + moveDir * moveSpeed * Time.fixedDeltaTime;
+        Vector3 newPosition;
+        if (gameObject.GetComponent<PlayerCollisionHandle>().PlayerIsImmortal())
+        {
+            newPosition = currentPos + moveDir * moveSpeed / 5 * Time.fixedDeltaTime;
+        }
+        else newPosition = currentPos + moveDir * moveSpeed * Time.fixedDeltaTime;
         newPosition.x = Mathf.Clamp(newPosition.x, -horizontalLimit, horizontalLimit);
         newPosition.z = Mathf.Clamp(newPosition.z, backLimit, forwardLimit);
         rb.MovePosition(newPosition);

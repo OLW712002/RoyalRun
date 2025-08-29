@@ -25,4 +25,9 @@ public class PlayerCollisionHandle : MonoBehaviour
         yield return new WaitForSecondsRealtime(immortalTime);
         isImmortal = false;
     }
+
+    public bool PlayerIsImmortal()
+    {
+        return isImmortal;
+    }
 }
