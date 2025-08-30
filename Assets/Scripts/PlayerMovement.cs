@@ -10,12 +10,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float forwardLimit = 10f;
     [SerializeField] float backLimit = -2f;
 
+
     Vector2 movement;
     Rigidbody rb;
+    PlayerCollisionHandle playerCollisionHandle;
+    Animator playerAnimator;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerCollisionHandle = GetComponent<PlayerCollisionHandle>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -34,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 currentPos = rb.position;
         Vector3 moveDir = new Vector3(movement.x, 0f, movement.y);
         Vector3 newPosition;
-        if (gameObject.GetComponent<PlayerCollisionHandle>().PlayerIsImmortal())
+        if (playerCollisionHandle.PlayerIsImmortal())
         {
             newPosition = currentPos + moveDir * moveSpeed / 5 * Time.fixedDeltaTime;
         }
@@ -42,5 +47,11 @@ public class PlayerMovement : MonoBehaviour
         newPosition.x = Mathf.Clamp(newPosition.x, -horizontalLimit, horizontalLimit);
         newPosition.z = Mathf.Clamp(newPosition.z, backLimit, forwardLimit);
         rb.MovePosition(newPosition);
+    }
+
+    public void AdjustPlayerAnimationSpeed()
+    {
+        float ratioChunkMoveSpeed = FindFirstObjectByType<LevelGenerator>().GetRatioChunkMoveSpeed();
+        playerAnimator.SetFloat("RunSpeed", ratioChunkMoveSpeed);
     }
 }

@@ -553,6 +553,8 @@ MonoBehaviour:
   chunkParent: {fileID: 1056448510}
   chunkLength: 10
   chunkMoveSpeed: 10
+  minChunkMoveSpeed: 5
+  maxChunkMoveSpeed: 15
 --- !u!4 &1079553424
 Transform:
   m_ObjectHideFlags: 0
@@ -766,6 +768,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 1168809813}
+  immortalTime: 2
+  speedAmountAdjust: -3
 --- !u!1 &1276627629
 GameObject:
   m_ObjectHideFlags: 0

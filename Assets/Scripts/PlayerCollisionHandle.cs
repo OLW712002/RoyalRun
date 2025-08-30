@@ -5,14 +5,25 @@ public class PlayerCollisionHandle : MonoBehaviour
 {
     [SerializeField] Animator playerAnimator;
     [SerializeField] float immortalTime = 2f;
+    [SerializeField] float speedAmountAdjust = -3f;
 
     const string hitString = "Hit";
     bool isImmortal = false;
+
+    LevelGenerator levelGenerator;
+
+    private void Start()
+    {
+        levelGenerator = FindFirstObjectByType<LevelGenerator>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!isImmortal)
         {
+            levelGenerator.AdjustChunkSpeed(speedAmountAdjust);
+            playerAnimator.SetFloat("RunSpeed", levelGenerator.GetRatioChunkMoveSpeed());
+
             playerAnimator.SetTrigger(hitString);
             StartCoroutine(ImmortalProcess());
         }
