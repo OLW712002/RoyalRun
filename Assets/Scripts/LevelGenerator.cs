@@ -10,10 +10,23 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float chunkMoveSpeed = 10f;
     [SerializeField] float minChunkMoveSpeed = 2f;
     [SerializeField] float maxChunkMoveSpeed = 15f;
-    
-    List<GameObject> chunks = new List<GameObject>();
-    float baseChunkMoveSpeed;
 
+    const string playerString = "Player";
+    
+    float baseChunkMoveSpeed;
+    float baseZGravity;
+
+    List<GameObject> chunks = new List<GameObject>();
+    GameObject player;
+    PlayerMovement playerMovement;
+    Animator playerAnimator;
+
+    private void Awake()
+    {
+        player = GameObject.Find(playerString);
+        playerMovement = player.GetComponent<PlayerMovement>();
+        playerAnimator = player.GetComponentInChildren<Animator>();
+    }
 
     void Start()
     {
@@ -56,10 +69,7 @@ public class LevelGenerator : MonoBehaviour
     public void AdjustChunkSpeed(float value)
     {
         chunkMoveSpeed = Mathf.Clamp(chunkMoveSpeed += value, minChunkMoveSpeed, maxChunkMoveSpeed);
-    }
-
-    public float GetRatioChunkMoveSpeed()
-    {
-        return chunkMoveSpeed / baseChunkMoveSpeed;
+        playerAnimator.SetFloat(playerMovement.GetRunSpeedString(), chunkMoveSpeed / baseChunkMoveSpeed);
+        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - value);
     }
 }

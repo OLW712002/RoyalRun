@@ -7,15 +7,15 @@ public class PlayerCollisionHandle : MonoBehaviour
     [SerializeField] float speedAmountAdjust = -3f;
 
     bool isImmortal = false;
+    string hitStringInAnimator;
 
     LevelGenerator levelGenerator;
-    PlayerMovement playerMovement;
     Animator playerAnimator;
 
     private void Start()
     {
         levelGenerator = FindFirstObjectByType<LevelGenerator>();
-        playerMovement = GetComponent<PlayerMovement>();
+        hitStringInAnimator = GetComponent<PlayerMovement>().GetHitString();
         playerAnimator = GetComponentInChildren<Animator>();
     }
 
@@ -24,9 +24,7 @@ public class PlayerCollisionHandle : MonoBehaviour
         if (!isImmortal)
         {
             levelGenerator.AdjustChunkSpeed(speedAmountAdjust);
-            playerAnimator.SetFloat(playerMovement.GetRunSpeedString(), levelGenerator.GetRatioChunkMoveSpeed());
-
-            playerAnimator.SetTrigger(playerMovement.GetHitString());
+            playerAnimator.SetTrigger(hitStringInAnimator);
             StartCoroutine(ImmortalProcess());
         }
         
