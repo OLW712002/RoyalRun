@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float forwardLimit = 10f;
     [SerializeField] float backLimit = -2f;
 
+    const string runSpeedStringInAnimator = "RunSpeed";
+    const string hitStringInAnimator = "Hit";
 
     Vector2 movement;
     Rigidbody rb;
@@ -52,6 +54,16 @@ public class PlayerMovement : MonoBehaviour
     public void AdjustPlayerAnimationSpeed()
     {
         float ratioChunkMoveSpeed = FindFirstObjectByType<LevelGenerator>().GetRatioChunkMoveSpeed();
-        playerAnimator.SetFloat("RunSpeed", ratioChunkMoveSpeed);
+        playerAnimator.SetFloat(runSpeedStringInAnimator, ratioChunkMoveSpeed);
+    }
+
+    public string GetRunSpeedString()
+    {
+        return runSpeedStringInAnimator;
+    }
+
+    public string GetHitString()
+    {
+        return hitStringInAnimator;
     }
 }
