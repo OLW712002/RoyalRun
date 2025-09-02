@@ -14,7 +14,6 @@ public class LevelGenerator : MonoBehaviour
     const string playerString = "Player";
     
     float baseChunkMoveSpeed;
-    float baseZGravity;
 
     List<GameObject> chunks = new List<GameObject>();
     GameObject player;

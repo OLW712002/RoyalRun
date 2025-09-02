@@ -1,13 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerCollisionHandle : MonoBehaviour
+public class PlayerCollisionHandle : Player
 {
     [SerializeField] float immortalTime = 2f;
     [SerializeField] float speedAmountAdjust = -3f;
 
     bool isImmortal = false;
-    string hitStringInAnimator;
 
     LevelGenerator levelGenerator;
     Animator playerAnimator;
@@ -15,7 +14,6 @@ public class PlayerCollisionHandle : MonoBehaviour
     private void Start()
     {
         levelGenerator = FindFirstObjectByType<LevelGenerator>();
-        hitStringInAnimator = GetComponent<PlayerMovement>().GetHitString();
         playerAnimator = GetComponentInChildren<Animator>();
     }
 

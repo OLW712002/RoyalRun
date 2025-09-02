@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Player
 {
     [SerializeField] float moveSpeed = 10f;
 
@@ -9,9 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float horizontalLimit = 4f;
     [SerializeField] float forwardLimit = 10f;
     [SerializeField] float backLimit = -2f;
-
-    const string runSpeedStringInAnimator = "RunSpeed";
-    const string hitStringInAnimator = "Hit";
 
     Vector2 movement;
     Rigidbody rb;
@@ -30,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //transform.Translate(Vector3.right * movement.x * moveSpeed * Time.deltaTime);
         HandleMovement();
     }
 
@@ -47,15 +43,5 @@ public class PlayerMovement : MonoBehaviour
         newPosition.x = Mathf.Clamp(newPosition.x, -horizontalLimit, horizontalLimit);
         newPosition.z = Mathf.Clamp(newPosition.z, backLimit, forwardLimit);
         rb.MovePosition(newPosition);
-    }
-
-    public string GetRunSpeedString()
-    {
-        return runSpeedStringInAnimator;
-    }
-
-    public string GetHitString()
-    {
-        return hitStringInAnimator;
     }
 }
