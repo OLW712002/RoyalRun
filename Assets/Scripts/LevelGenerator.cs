@@ -19,12 +19,14 @@ public class LevelGenerator : MonoBehaviour
     GameObject player;
     PlayerMovement playerMovement;
     Animator playerAnimator;
+    CameraController cameraController;
 
     private void Awake()
     {
         player = GameObject.Find(playerString);
         playerMovement = player.GetComponent<PlayerMovement>();
         playerAnimator = player.GetComponentInChildren<Animator>();
+        cameraController = FindFirstObjectByType<CameraController>();
     }
 
     void Start()
@@ -69,6 +71,7 @@ public class LevelGenerator : MonoBehaviour
     {
         chunkMoveSpeed = Mathf.Clamp(chunkMoveSpeed += value, minChunkMoveSpeed, maxChunkMoveSpeed);
         playerAnimator.SetFloat(playerMovement.GetRunSpeedString(), chunkMoveSpeed / baseChunkMoveSpeed);
+        cameraController.ChangeCameraFOV(value);
         Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - value);
     }
 }
