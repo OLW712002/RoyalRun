@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerMovement : Player
 {
@@ -8,7 +10,10 @@ public class PlayerMovement : Player
     [Header("MoveLimit")]
     [SerializeField] float horizontalLimit = 4f;
     [SerializeField] float forwardLimit = 10f;
-    [SerializeField] float backLimit = -2f;
+    [SerializeField] Vector2 backLimitRange = new Vector2(0f, -4.5f);
+    [SerializeField] float backLimitChangeDuration = 1f;
+
+    float backLimit;
 
     Vector2 movement;
     Rigidbody rb;
@@ -16,6 +21,7 @@ public class PlayerMovement : Player
 
     private void Awake()
     {
+        backLimit = backLimitRange.x;
         rb = GetComponent<Rigidbody>();
         playerCollisionHandle = GetComponent<PlayerCollisionHandle>();
     }
@@ -43,5 +49,33 @@ public class PlayerMovement : Player
         newPosition.x = Mathf.Clamp(newPosition.x, -horizontalLimit, horizontalLimit);
         newPosition.z = Mathf.Clamp(newPosition.z, backLimit, forwardLimit);
         rb.MovePosition(newPosition);
+    }
+
+    public void AdjustBackLimit(float value)
+    {
+        StopAllCoroutines();
+        StartCoroutine(AdjustBackLimitCoroutine(value));
+    }
+
+    IEnumerator AdjustBackLimitCoroutine(float value)
+    {
+        float elapsedTime = 0f;
+        float currenBackLimit = backLimit;
+        while (elapsedTime < backLimitChangeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            backLimit = Mathf.Lerp(currenBackLimit, value, elapsedTime / backLimitChangeDuration);
+            yield return null;
+        }
+    }
+
+    public float GetForwardLimit()
+    {
+        return forwardLimit;
+    }
+
+    public Vector2 GetBackLimitRange()
+    {
+        return backLimitRange;
     }
 }
