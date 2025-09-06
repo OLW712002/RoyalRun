@@ -10,6 +10,7 @@ public class PlayerMovement : Player
     [Header("MoveLimit")]
     [SerializeField] float horizontalLimit = 4f;
     [SerializeField] float forwardLimit = 10f;
+    [Tooltip("X and Y are the maximum and minimum values for the back limit, respectively.")]
     [SerializeField] Vector2 backLimitRange = new Vector2(0f, -4.5f);
     [SerializeField] float backLimitChangeDuration = 1f;
 

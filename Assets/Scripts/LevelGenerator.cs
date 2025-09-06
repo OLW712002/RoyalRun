@@ -3,13 +3,18 @@ using System.Collections.Generic;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] GameObject chunkPrefab;
     [SerializeField] int startingChunkAmount = 12;
     [SerializeField] Transform chunkParent;
+
+    [Header("Level Settings")]
     [SerializeField] float chunkLength = 10f;
     [SerializeField] float chunkMoveSpeed = 10f;
     [SerializeField] float minChunkMoveSpeed = 2f;
     [SerializeField] float maxChunkMoveSpeed = 15f;
+    [SerializeField] float minGravityZ = -22f;
+    [SerializeField] float maxGravityZ = -2f;
 
     const string playerString = "Player";
     
@@ -72,7 +77,7 @@ public class LevelGenerator : MonoBehaviour
         chunkMoveSpeed = Mathf.Clamp(chunkMoveSpeed += value, minChunkMoveSpeed, maxChunkMoveSpeed);
         playerAnimator.SetFloat(playerMovement.GetRunSpeedString(), chunkMoveSpeed / baseChunkMoveSpeed);
         cameraController.ChangeCameraFOV(value);
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - value);
+        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Mathf.Clamp(Physics.gravity.z - value, minGravityZ, maxGravityZ));
 
         Vector2 backMoveLimit = playerMovement.GetBackLimitRange();
         playerMovement.AdjustBackLimit(Mathf.Lerp(backMoveLimit.x, backMoveLimit.y, cameraController.GetFOVInterpolation()));
