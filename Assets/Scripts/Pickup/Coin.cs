@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Coin : Pickup
 {
-    [SerializeField] int score = 100;
+    [SerializeField] int scoreAmount = 100;
 
     ScoreKeeper scoreKeeper;
 
-    private void Start()
+    public void Init(ScoreKeeper sk)
     {
-        scoreKeeper = FindFirstObjectByType<ScoreKeeper>();
+        scoreKeeper = sk;
     }
 
     protected override void OnPickup()
     {
-        scoreKeeper.AddScore(score);
+        scoreKeeper.AddScore(scoreAmount);
     }
 }

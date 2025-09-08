@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject chunkPrefab;
     [SerializeField] int startingChunkAmount = 12;
     [SerializeField] Transform chunkParent;
+    [SerializeField] ScoreKeeper scoreKeeper;
 
     [Header("Level Settings")]
     [SerializeField] float chunkLength = 10f;
@@ -55,6 +56,7 @@ public class LevelGenerator : MonoBehaviour
         else newChunkPos = (chunks[chunks.Count - 1].transform.position.z + chunkLength) * Vector3.forward;
         GameObject newChunk = Instantiate(chunkPrefab, newChunkPos, Quaternion.identity, chunkParent);
         chunks.Add(newChunk);
+        newChunk.GetComponent<Chunk>().Init(this, scoreKeeper);
     }
 
     void MoveChunks()

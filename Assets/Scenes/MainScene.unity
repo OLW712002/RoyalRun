@@ -814,6 +814,7 @@ MonoBehaviour:
   chunkPrefab: {fileID: 347202827163589453, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
   startingChunkAmount: 12
   chunkParent: {fileID: 1056448510}
+  scoreKeeper: {fileID: 1079669092}
   chunkLength: 10
   chunkMoveSpeed: 10
   minChunkMoveSpeed: 5
