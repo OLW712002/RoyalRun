@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     float timeLeft;
     bool isGameover = false;
 
+    public bool CheckGameover => isGameover;
+
     void Start()
     {
         timeLeft = startTime;
