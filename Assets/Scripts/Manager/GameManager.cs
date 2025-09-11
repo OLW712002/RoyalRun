@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] GameObject gameoverText;
     [SerializeField] float startTime = 5f;
+    [SerializeField] float maxTimeLeft = 30f;
 
     float timeLeft;
     bool isGameover = false;
@@ -30,5 +31,11 @@ public class GameManager : MonoBehaviour
             playerMovement.enabled = false;
             gameoverText.SetActive(true);
         }
+    }
+
+    public void IncreaseTimeLeft(float value)
+    {
+        timeLeft += value;
+        if (timeLeft >= maxTimeLeft) timeLeft = maxTimeLeft;
     }
 }

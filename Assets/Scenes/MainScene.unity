@@ -815,6 +815,7 @@ MonoBehaviour:
   startingChunkAmount: 12
   chunkParent: {fileID: 1056448510}
   scoreKeeper: {fileID: 1079669092}
+  gameManager: {fileID: 1561492415}
   chunkLength: 10
   chunkMoveSpeed: 10
   minChunkMoveSpeed: 5
@@ -1430,6 +1431,7 @@ MonoBehaviour:
   timeText: {fileID: 1236108044}
   gameoverText: {fileID: 1702924184}
   startTime: 5
+  maxTimeLeft: 30
 --- !u!1 &1702924184
 GameObject:
   m_ObjectHideFlags: 0

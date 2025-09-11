@@ -14,6 +14,7 @@ public class Chunk : MonoBehaviour
 
     LevelGenerator levelGenerator;
     ScoreKeeper scoreKeeper;
+    GameManager gameManager;
 
     void Start()
     {
@@ -22,10 +23,11 @@ public class Chunk : MonoBehaviour
         SpawnApple();
     }
 
-    public void Init(LevelGenerator lg, ScoreKeeper sk)
+    public void Init(LevelGenerator lg, ScoreKeeper sk, GameManager gm)
     {
         levelGenerator = lg;
         scoreKeeper = sk;
+        gameManager = gm;
     }
 
     void SpawnFences()
@@ -47,7 +49,7 @@ public class Chunk : MonoBehaviour
         int selectedLane = SelectLane();
         Vector3 spawnPos = new Vector3(lanes[selectedLane], transform.position.y, transform.position.z);
         Apple newApple = Instantiate(applePrefab, spawnPos, Quaternion.identity, this.transform).GetComponent<Apple>();
-        newApple.Init(levelGenerator);
+        newApple.Init(levelGenerator, gameManager);
     }
 
     void SpawnCoins()
