@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class LevelGenerator : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] GameObject chunkPrefab;
+    [SerializeField] GameObject[] chunkPrefab;
+    [SerializeField] GameObject checkpointChunkPrefab;
     [SerializeField] int startingChunkAmount = 12;
     [SerializeField] Transform chunkParent;
     [SerializeField] ScoreKeeper scoreKeeper;
@@ -17,10 +18,12 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float maxChunkMoveSpeed = 15f;
     [SerializeField] float minGravityZ = -22f;
     [SerializeField] float maxGravityZ = -2f;
+    [SerializeField] int checkpointChunkFrequency = 8;
 
     const string playerString = "Player";
     
     float baseChunkMoveSpeed;
+    int numChunksBeforeCheckpoint;
 
     List<GameObject> chunks = new List<GameObject>();
     GameObject player;
@@ -38,6 +41,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
+        numChunksBeforeCheckpoint = checkpointChunkFrequency;
         baseChunkMoveSpeed = chunkMoveSpeed;
         for (int i = 0; i < startingChunkAmount; i++)
         {
@@ -55,7 +59,18 @@ public class LevelGenerator : MonoBehaviour
         Vector3 newChunkPos;
         if (chunks.Count == 0) newChunkPos = transform.position;
         else newChunkPos = (chunks[chunks.Count - 1].transform.position.z + chunkLength) * Vector3.forward;
-        GameObject newChunk = Instantiate(chunkPrefab, newChunkPos, Quaternion.identity, chunkParent);
+        GameObject chunkToSpawn;
+        if (numChunksBeforeCheckpoint == 0)
+        {
+            chunkToSpawn = checkpointChunkPrefab;
+            numChunksBeforeCheckpoint = checkpointChunkFrequency;
+        }
+        else
+        {
+            chunkToSpawn = chunkPrefab[Random.Range(0, chunkPrefab.Length)];
+            numChunksBeforeCheckpoint--;
+        }
+        GameObject newChunk = Instantiate(chunkToSpawn, newChunkPos, Quaternion.identity, chunkParent);
         chunks.Add(newChunk);
         newChunk.GetComponent<Chunk>().Init(this, scoreKeeper, gameManager);
     }

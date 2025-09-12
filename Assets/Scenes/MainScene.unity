@@ -811,7 +811,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c988690df68c6aa4f892e77c20d2b5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkPrefab: {fileID: 347202827163589453, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
+  chunkPrefab:
+  - {fileID: 347202827163589453, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
+  - {fileID: 347202827163589453, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
+  - {fileID: 347202827163589453, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
+  - {fileID: 5354738103982442565, guid: f12094c3596ecf548a379f8cd098d4cb, type: 3}
+  - {fileID: 5354738103982442565, guid: 9fc63d1f69d2fca42a038f2a65f7063e, type: 3}
+  checkpointChunkPrefab: {fileID: 5354738103982442565, guid: 50152ed5ea8d3ea47b7a439aad6cb6c5, type: 3}
   startingChunkAmount: 12
   chunkParent: {fileID: 1056448510}
   scoreKeeper: {fileID: 1079669092}
@@ -822,6 +828,7 @@ MonoBehaviour:
   maxChunkMoveSpeed: 15
   minGravityZ: -22
   maxGravityZ: -2
+  checkpointChunkFrequency: 8
 --- !u!4 &1079553424
 Transform:
   m_ObjectHideFlags: 0
