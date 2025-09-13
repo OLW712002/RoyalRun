@@ -3,20 +3,16 @@ using UnityEngine;
 public class Apple : Pickup
 {
     [SerializeField] float speedIncreaseAmount = 2f;
-    [SerializeField] float timeAmount = 10f;
 
     LevelGenerator levelGenerator;
-    GameManager gameManager;
 
-    public void Init(LevelGenerator lg, GameManager gm)
+    public void Init(LevelGenerator lg)
     {
         levelGenerator = lg;
-        gameManager = gm;
     }
 
     protected override void OnPickup()
     {
         levelGenerator.AdjustChunkSpeed(speedIncreaseAmount);
-        gameManager.IncreaseTimeLeft(timeAmount);
     }
 }

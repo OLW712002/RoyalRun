@@ -76,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
         }
         GameObject newChunk = Instantiate(chunkToSpawn, newChunkPos, Quaternion.identity, chunkParent);
         chunks.Add(newChunk);
-        newChunk.GetComponent<Chunk>().Init(this, scoreKeeper, gameManager);
+        newChunk.GetComponent<Chunk>().Init(this, scoreKeeper);
         if (isCheckpointChunk) newChunk.GetComponent<Checkpoint>().Init(gameManager);
     }
 
