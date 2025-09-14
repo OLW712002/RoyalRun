@@ -1437,7 +1437,7 @@ MonoBehaviour:
   playerMovement: {fileID: 1234687787}
   timeText: {fileID: 1236108044}
   gameoverText: {fileID: 1702924184}
-  startTime: 5
+  startTime: 15
   maxTimeLeft: 30
 --- !u!1 &1702924184
 GameObject:
