@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6719307230838407862}
   - component: {fileID: 4799187220088049690}
   - component: {fileID: 6079593316626212390}
+  - component: {fileID: 4875943213500168024}
   m_Layer: 0
   m_Name: Checkpoint Text
   m_TagString: Untagged
@@ -176,6 +177,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 4799187220088049690}
   m_maskType: 0
+--- !u!114 &4875943213500168024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784981957867969957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494664db779ae80428cdc131ae9f4c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1
+  selectedType: 1
 --- !u!1001 &99181884058142314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -496,9 +511,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8200258984280547038, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6719307230838407862}
-    - targetCorrespondingSourceObject: {fileID: 8200258984280547038, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1156219700019973896}
     - targetCorrespondingSourceObject: {fileID: 8200258984280547038, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
       insertIndex: -1
@@ -512,6 +524,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8200258984280547038, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8391216815367182850}
+    - targetCorrespondingSourceObject: {fileID: 8200258984280547038, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6719307230838407862}
     - targetCorrespondingSourceObject: {fileID: 8200258984280547038, guid: 1702f952b3d9bc54e90816a05174dbbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4470063175234213909}
@@ -623,12 +638,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9011490599074348966, guid: 5e55e605674404f4ba346895e2675cbb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4899356b8c335b94ab390dcea8dc3a4a, type: 2}
     m_RemovedComponents:
     - {fileID: -6037031658610819353, guid: 5e55e605674404f4ba346895e2675cbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7354310589788102259, guid: 5e55e605674404f4ba346895e2675cbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5300452332727850370}
   m_SourcePrefab: {fileID: 100100000, guid: 5e55e605674404f4ba346895e2675cbb, type: 3}
+--- !u!1 &3837922761487123119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7354310589788102259, guid: 5e55e605674404f4ba346895e2675cbb, type: 3}
+  m_PrefabInstance: {fileID: 6002393330487729372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5300452332727850370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837922761487123119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494664db779ae80428cdc131ae9f4c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1
+  selectedType: 0
 --- !u!4 &4470063175234213909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7873438015224726729, guid: 5e55e605674404f4ba346895e2675cbb, type: 3}
