@@ -49,6 +49,7 @@ public class FadeObject : MonoBehaviour
                     elapsedTime += Time.deltaTime;
                     yield return null;
                 }
+                meshRenderer.enabled = false;
                 break;
             case ComponentType.TMP_Text:
 
