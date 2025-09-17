@@ -24,7 +24,7 @@ public class FadeObject : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.z < 20 && !isFading)
+        if (transform.position.z < 10 && !isFading)
         {
             Debug.Log("Fading");
             isFading = true;
