@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class ObstacleDestroy : MonoBehaviour
 {
+    ObstacleSpawner obstacleSpawner;
+
+    public void Init(ObstacleSpawner os)
+    {
+        obstacleSpawner = os;
+    }
+
     void Start()
     {
         InvokeRepeating("CheckObstaclePos", 0f, 5f);
@@ -12,6 +19,7 @@ public class ObstacleDestroy : MonoBehaviour
         if (transform.position.z < Camera.main.transform.position.z - 5 || transform.position.y < -10)
         {
             CancelInvoke("CheckObstaclePos");
+            obstacleSpawner.DecreaseObstacleInScene();
             Destroy(gameObject);
         }
     }
