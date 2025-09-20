@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedupParticle: {fileID: 1893587489}
   minFOV: 35
-  maxFOV: 85
+  maxFOV: 50
   zoomDuration: 1
   zoomSpeedModifier: 5
 --- !u!114 &274191840
