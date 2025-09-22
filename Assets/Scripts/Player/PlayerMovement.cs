@@ -70,13 +70,11 @@ public class PlayerMovement : Player
         }
     }
 
-    public float GetForwardLimit()
-    {
-        return forwardLimit;
-    }
+    public float GetHorizontalLimit => horizontalLimit;
 
-    public Vector2 GetBackLimitRange()
-    {
-        return backLimitRange;
-    }
+    public float GetForwardLimit => forwardLimit;
+
+    public float GetBackLimit => backLimit;
+
+    public Vector2 GetBackLimitRange => backLimitRange;
 }

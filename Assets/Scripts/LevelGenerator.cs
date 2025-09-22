@@ -102,7 +102,7 @@ public class LevelGenerator : MonoBehaviour
         cameraController.ChangeCameraFOV(value);
         Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Mathf.Clamp(Physics.gravity.z - value, minGravityZ, maxGravityZ));
 
-        Vector2 backMoveLimit = playerMovement.GetBackLimitRange();
+        Vector2 backMoveLimit = playerMovement.GetBackLimitRange;
         playerMovement.AdjustBackLimit(Mathf.Lerp(backMoveLimit.x, backMoveLimit.y, cameraController.GetFOVInterpolation()));
     }
 }

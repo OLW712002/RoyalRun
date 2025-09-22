@@ -6572,7 +6572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fb2f0db9b31f54d94e68e6c291a621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quadMaterial: {fileID: 0}
+  playerMovement: {fileID: 1234687787}
+  lineMaterial: {fileID: 2100000, guid: 2bd214b7f4a73bd458d0b4ec3219a306, type: 2}
+  yPosMoveRange: 0.4
 --- !u!120 &1970600565
 LineRenderer:
   serializedVersion: 2
@@ -6597,7 +6599,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bd214b7f4a73bd458d0b4ec3219a306, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6618,12 +6620,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 4, y: 2, z: 4}
-  - {x: 4, y: 2, z: -4}
-  - {x: -4, y: 2, z: -4}
-  - {x: -4, y: 2, z: 4}
-  - {x: 4, y: 2, z: 4}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -6639,21 +6636,12 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.705186
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.12156863, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
