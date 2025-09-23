@@ -8,6 +8,7 @@ public class PlayerMoveRange : MonoBehaviour
 
     LineRenderer lineRenderer;
 
+    Vector3[] points = new Vector3[5];
     float horizontalLimit;
     float forwardLimit;
     float backLimit;
@@ -24,7 +25,6 @@ public class PlayerMoveRange : MonoBehaviour
         lineRenderer.widthMultiplier = 0.1f;
         lineRenderer.material = lineMaterial;
 
-        Vector3[] points = new Vector3[5];
         points[0] = new Vector3(horizontalLimit, yPosMoveRange, forwardLimit);
         points[1] = new Vector3(horizontalLimit, yPosMoveRange, backLimit);
         points[2] = new Vector3(-horizontalLimit, yPosMoveRange, backLimit);
@@ -37,5 +37,12 @@ public class PlayerMoveRange : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AdjustBackLimitLine(float value)
+    {
+        points[1] = new Vector3(horizontalLimit, yPosMoveRange, value);
+        points[2] = new Vector3(-horizontalLimit, yPosMoveRange, value);
+        lineRenderer.SetPositions(points);
     }
 }

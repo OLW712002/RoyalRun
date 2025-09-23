@@ -13,6 +13,7 @@ public class PlayerMovement : Player
     [Tooltip("X and Y are the maximum and minimum values for the back limit, respectively.")]
     [SerializeField] Vector2 backLimitRange = new Vector2(0f, -4.5f);
     [SerializeField] float backLimitChangeDuration = 1f;
+    [SerializeField] PlayerMoveRange playerMoveRange;
 
     float backLimit;
 
@@ -66,6 +67,7 @@ public class PlayerMovement : Player
         {
             elapsedTime += Time.deltaTime;
             backLimit = Mathf.Lerp(currenBackLimit, value, elapsedTime / backLimitChangeDuration);
+            playerMoveRange.AdjustBackLimitLine(backLimit);
             yield return null;
         }
     }
