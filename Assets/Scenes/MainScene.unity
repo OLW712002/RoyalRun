@@ -213,7 +213,7 @@ MonoBehaviour:
   minFOV: 35
   maxFOV: 50
   zoomDuration: 1
-  zoomSpeedModifier: 5
+  zoomSpeedModifier: 3
 --- !u!114 &274191840
 MonoBehaviour:
   m_ObjectHideFlags: 0

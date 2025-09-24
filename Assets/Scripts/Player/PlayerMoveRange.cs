@@ -34,11 +34,6 @@ public class PlayerMoveRange : MonoBehaviour
         lineRenderer.SetPositions(points);
     }
 
-    void Update()
-    {
-        
-    }
-
     public void AdjustBackLimitLine(float value)
     {
         points[1] = new Vector3(horizontalLimit, yPosMoveRange, value);
