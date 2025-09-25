@@ -3,6 +3,7 @@ using UnityEngine;
 public class ObstacleDestroy : MonoBehaviour
 {
     ObstacleSpawner obstacleSpawner;
+    Transform lastTrackingPos;
 
     public void Init(ObstacleSpawner os)
     {
@@ -16,7 +17,16 @@ public class ObstacleDestroy : MonoBehaviour
 
     void CheckObstaclePos()
     {
-        if (transform.position.z < Camera.main.transform.position.z - 5 || transform.position.y < -10)
+        if (lastTrackingPos == null)
+        {
+            Debug.Log("null");
+            lastTrackingPos = this.transform;
+            return;
+        }
+        bool isOutOfCameraView = transform.position.z < Camera.main.transform.position.z - 5 || transform.position.y < -10;
+        bool isStuck = lastTrackingPos.position.z - transform.position.z < 5;
+
+        if (isOutOfCameraView || isStuck)
         {
             CancelInvoke("CheckObstaclePos");
             obstacleSpawner.DecreaseObstacleInScene();
