@@ -31,8 +31,22 @@ public class PlayerCollisionHandle : Player
     IEnumerator ImmortalProcess()
     {
         isImmortal = true;
-        yield return new WaitForSecondsRealtime(immortalTime);
+        float elapsedTime = 0f;
+        while (elapsedTime < immortalTime)
+        {
+            elapsedTime += Time.deltaTime;
+            ChangeVisibleStatus();
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
         isImmortal = false;
+    }
+
+    void ChangeVisibleStatus()
+    {
+        int defaultLayerIndex = LayerMask.NameToLayer(defaultLayerString);
+        int invisibleLayerIndex = LayerMask.NameToLayer(invisibleLayerString);
+        int targetLayer = (gameObject.layer == defaultLayerIndex) ? invisibleLayerIndex : defaultLayerIndex;
+        gameObject.layer = targetLayer;
     }
 
     public bool PlayerIsImmortal()
