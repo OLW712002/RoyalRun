@@ -34,11 +34,12 @@ public class PlayerCollisionHandle : Player
         float elapsedTime = 0f;
         while (elapsedTime < immortalTime)
         {
-            elapsedTime += Time.deltaTime;
             ChangeVisibleStatus();
             yield return new WaitForSecondsRealtime(0.1f);
+            elapsedTime += 0.1f;
         }
         isImmortal = false;
+        TraverseChildAndChangeLayer(gameObject.transform, LayerMask.NameToLayer(defaultLayerString));
     }
 
     void ChangeVisibleStatus()
@@ -47,6 +48,16 @@ public class PlayerCollisionHandle : Player
         int invisibleLayerIndex = LayerMask.NameToLayer(invisibleLayerString);
         int targetLayer = (gameObject.layer == defaultLayerIndex) ? invisibleLayerIndex : defaultLayerIndex;
         gameObject.layer = targetLayer;
+        TraverseChildAndChangeLayer(gameObject.transform, targetLayer);
+    }
+
+    void TraverseChildAndChangeLayer(Transform parent, LayerMask layer)
+    {
+        foreach(Transform child in parent)
+        {
+            child.gameObject.layer = layer;
+            TraverseChildAndChangeLayer(child, layer);
+        }
     }
 
     public bool PlayerIsImmortal()
