@@ -14,7 +14,6 @@ public class FadeObject : MonoBehaviour
     TMP_Text tmpText;
 
     bool isFading = false;
-    //string[] properties = new string[] {"_FaceColor", "_OutlineColor", "_UnderlayColor" };
 
     private void Start()
     {
@@ -78,16 +77,6 @@ public class FadeObject : MonoBehaviour
                     elapsedTime += Time.deltaTime;
                     yield return null;
                 }
-
-
-                //startColor = tmpText.material.color;
-                //targetColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
-                //while (elapsedTime < fadeDuration)
-                //{
-                //    tmpText.material.color = Color.Lerp(startColor, targetColor, elapsedTime / fadeDuration);
-                //    elapsedTime += Time.deltaTime;
-                //    yield return null;
-                //}
 
                 break;
         }

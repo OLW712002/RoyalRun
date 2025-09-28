@@ -21,6 +21,11 @@ public class PlayerMovement : Player
     Rigidbody rb;
     PlayerCollisionHandle playerCollisionHandle;
 
+    public float GetHorizontalLimit => horizontalLimit;
+    public float GetForwardLimit => forwardLimit;
+    public float GetBackLimit => backLimit;
+    public Vector2 GetBackLimitRange => backLimitRange;
+
     private void Awake()
     {
         backLimit = backLimitRange.x;
@@ -71,12 +76,4 @@ public class PlayerMovement : Player
             yield return null;
         }
     }
-
-    public float GetHorizontalLimit => horizontalLimit;
-
-    public float GetForwardLimit => forwardLimit;
-
-    public float GetBackLimit => backLimit;
-
-    public Vector2 GetBackLimitRange => backLimitRange;
 }
