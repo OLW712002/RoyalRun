@@ -24,7 +24,7 @@ public class ObstacleDestroy : MonoBehaviour
             return;
         }
         bool isOutOfCameraView = transform.position.z < Camera.main.transform.position.z - 5 || transform.position.y < -10;
-        bool isStuck = lastTrackingPos.position.z - transform.position.z < 3;
+        bool isStuck = lastTrackingPos.position.z - transform.position.z < 5;
 
         if (isOutOfCameraView || isStuck)
         {
