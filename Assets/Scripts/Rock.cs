@@ -5,6 +5,7 @@ public class Rock : MonoBehaviour
 {
     [SerializeField] float shakeModifier = 10f;
     [SerializeField] ParticleSystem collisionParticle;
+    [SerializeField] AudioSource collisionAudioSource;
 
     CinemachineImpulseSource cinemachineImpulseSource;
 
@@ -31,6 +32,7 @@ public class Rock : MonoBehaviour
         ContactPoint contactPoint = collision.contacts[0];
         collisionParticle.transform.position = contactPoint.point;
         collisionParticle.Play();
+        collisionAudioSource.Play();
         //Instantiate(collisionParticle, contactPoint.point, Quaternion.identity, transform);
     }
 }
