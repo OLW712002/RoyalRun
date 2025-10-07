@@ -1,13 +1,16 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using System.Collections;
 
 public class Rock : MonoBehaviour
 {
     [SerializeField] float shakeModifier = 10f;
+    [SerializeField] float collisionFXCooldown = 1f;
     [SerializeField] ParticleSystem collisionParticle;
     [SerializeField] AudioSource collisionAudioSource;
 
     CinemachineImpulseSource cinemachineImpulseSource;
+    bool collisionFXIsPlaying = false;
 
     private void Awake()
     {
@@ -17,7 +20,7 @@ public class Rock : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         ShakeCamera();
-        GenerateParticles(collision);
+        if (!collisionFXIsPlaying) StartCoroutine(PlayCollisionFXCoroutine(collision));
     }
 
     void ShakeCamera()
@@ -27,12 +30,20 @@ public class Rock : MonoBehaviour
         cinemachineImpulseSource.GenerateImpulse(shakeIntensity);
     }
 
-    void GenerateParticles(Collision collision)
+    void PlayCollisionFX(Collision collision)
     {
         ContactPoint contactPoint = collision.contacts[0];
         collisionParticle.transform.position = contactPoint.point;
         collisionParticle.Play();
         collisionAudioSource.Play();
         //Instantiate(collisionParticle, contactPoint.point, Quaternion.identity, transform);
+    }
+
+    IEnumerator PlayCollisionFXCoroutine(Collision collision)
+    {
+        collisionFXIsPlaying = true;
+        PlayCollisionFX(collision);
+        yield return new WaitForSeconds(collisionFXCooldown);
+        collisionFXIsPlaying = false;
     }
 }

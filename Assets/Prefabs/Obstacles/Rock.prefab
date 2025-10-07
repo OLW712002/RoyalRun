@@ -5186,6 +5186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeModifier: 4
+  collisionFXCooldown: 1
   collisionParticle: {fileID: 2311592191889715517}
   collisionAudioSource: {fileID: 9146585831035166652}
 --- !u!114 &862149075919533003
