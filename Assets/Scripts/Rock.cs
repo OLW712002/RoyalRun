@@ -36,7 +36,6 @@ public class Rock : MonoBehaviour
         collisionParticle.transform.position = contactPoint.point;
         collisionParticle.Play();
         collisionAudioSource.Play();
-        //Instantiate(collisionParticle, contactPoint.point, Quaternion.identity, transform);
     }
 
     IEnumerator PlayCollisionFXCoroutine(Collision collision)

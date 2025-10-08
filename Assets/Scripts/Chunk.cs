@@ -17,6 +17,7 @@ public class Chunk : MonoBehaviour
 
     void Start()
     {
+        if (transform.position.z < 30) return;
         SpawnFences();
         SpawnCoins();
         SpawnApple();

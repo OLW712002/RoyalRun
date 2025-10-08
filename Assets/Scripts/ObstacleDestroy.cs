@@ -25,9 +25,9 @@ public class ObstacleDestroy : MonoBehaviour
             hasInit = true;
             return;
         }
+
         bool isOutOfCameraView = transform.position.z < Camera.main.transform.position.z - 5 || transform.position.y < -10;
         bool isStuck = lastTrackingPos.z - transform.position.z < 2;
-
         if (isOutOfCameraView || isStuck)
         {
             if (isStuck) Debug.Log(lastTrackingPos + "" + transform.position);

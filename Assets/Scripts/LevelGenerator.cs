@@ -86,6 +86,7 @@ public class LevelGenerator : MonoBehaviour
         {
             GameObject chunk = chunks[i];
             chunks[i].transform.Translate(Vector3.back * chunkMoveSpeed * Time.deltaTime);
+
             if (chunk.transform.position.z <= Camera.main.transform.position.z - 5)
             {
                 chunks.Remove(chunk);
