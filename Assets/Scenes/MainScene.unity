@@ -6394,7 +6394,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2868158
   m_Height: 2.035491
@@ -11772,6 +11772,10 @@ MonoBehaviour:
   - {fileID: 4623120753064003157, guid: 954784eb6ffdcfc4592c3db4eff888a6, type: 3}
   - {fileID: 4405331872571934992, guid: 299b2e226ca6471478eff9e78397e2a1, type: 3}
   - {fileID: 3851690201396731577, guid: 324fdeed821a1274c9dbda7d05e66832, type: 3}
+  - {fileID: 3851690201396731577, guid: 324fdeed821a1274c9dbda7d05e66832, type: 3}
+  - {fileID: 4405331872571934992, guid: 299b2e226ca6471478eff9e78397e2a1, type: 3}
+  - {fileID: 4623120753064003157, guid: 954784eb6ffdcfc4592c3db4eff888a6, type: 3}
+  - {fileID: 8291235354502173633, guid: d33bc9048ba461a44bd97c2241268d51, type: 3}
   obstacleParent: {fileID: 1171425861}
   timeBetweenSpawns: 1
   maxObstaclesInScene: 5
