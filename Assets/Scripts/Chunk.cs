@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Chunk : MonoBehaviour
 {
+    [SerializeField] int numEmptyChunk = 3;
     [SerializeField] GameObject fencePrefab;
     [SerializeField] GameObject applePrefab;
     [SerializeField] GameObject coinPrefab;
@@ -15,18 +16,27 @@ public class Chunk : MonoBehaviour
     LevelGenerator levelGenerator;
     ScoreKeeper scoreKeeper;
 
-    void Start()
-    {
-        if (transform.position.z < 30) return;
-        SpawnFences();
-        SpawnCoins();
-        SpawnApple();
-    }
+    //void Start()
+    //{
+    //    if (transform.position.z < 30) return;
+    //    SpawnFences();
+    //    SpawnCoins();
+    //    SpawnApple();
+    //}
 
     public void Init(LevelGenerator lg, ScoreKeeper sk)
     {
         levelGenerator = lg;
         scoreKeeper = sk;
+        SetupChunk();
+    }
+
+    void SetupChunk()
+    {
+        if (transform.position.z < numEmptyChunk * levelGenerator.GetChunkLength) return;
+        SpawnFences();
+        SpawnCoins();
+        SpawnApple();
     }
 
     void SpawnFences()

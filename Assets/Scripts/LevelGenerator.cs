@@ -31,6 +31,8 @@ public class LevelGenerator : MonoBehaviour
     Animator playerAnimator;
     CameraController cameraController;
 
+    public float GetChunkLength => chunkLength;
+
     private void Awake()
     {
         player = GameObject.Find(playerString);
